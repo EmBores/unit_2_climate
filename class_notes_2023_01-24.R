@@ -3,7 +3,11 @@
 # Ice mass loss over poles
 
 ant_ice_loss= read.table(file="data/antarctica_mass_200204_202209.txt", skip=31, sep="", header=FALSE, 
-           col.names=c("decimal_date", "mass_Gt", "sigma_Gt"))
+           col.names=c("decimal_date", "mass_Gt", "sigma_Gt")) 
+#used "skip" to skip the first 31 lines in the data package, 32 starts the data
+#sep "" indicates data is separated by space
+
+
 typeof(ant_ice_loss)
 class(ant_ice_loss)
 dim(ant_ice_loss)
@@ -13,19 +17,22 @@ View(ant_ice_loss)
 grn_ice_loss= read.table(file="data/greenland_mass_200204_202209.txt", skip=31, sep="", header=FALSE, 
                          col.names=c("decimal_date", "mass_Gt", "sigma_Gt"))
 
-head(grn_ice_loss)
-tail(grn_ice_loss)
+head(grn_ice_loss) #shows first 6 rows of data frame
+tail(grn_ice_loss) #shows last 6 rows of data frame
 summary(ant_ice_loss)
 
 #plot it!!
 plot(x=ant_ice_loss$decimal_date, y=ant_ice_loss$mass_Gt, type="l", xlab="Year", ylab= "Antarctic ice loss (Gt)")
 lines(mass_Gt~decimal_date,data=grn_ice_loss, col="red")
 
-# Add data break between Grace missions
+#type "l" for line "p" for point
+
+#Add data break between Grace missions
+# data break to include missing dating from 2018
 
 data_break= data.frame(decimal_date=2018.0, mass_Gt=NA, sigma_Gt=NA)
 
-#insert data break into ice loss dataframes
+#insert data break into ice loss dataframes using rbind
 ant_ice_loss_with_NA=rbind(ant_ice_loss, data_break)
 grn_ice_loss_with_NA=rbind(grn_ice_loss, data_break)
 

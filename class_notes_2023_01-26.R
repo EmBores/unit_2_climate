@@ -95,12 +95,34 @@ if(temp > 98.6){
     
 
     
-
-  
-
-
 #exercise 3.2
-n_donuts= 24
 
-if ()
+n_donuts= 10
+
+if(n_donuts==12){
+  print("dad bought a dozen donuts")
+}else if(n_donuts==13){
+  print("dad bough a baker's dozen")
+}else if (n_donuts > 13){
+  print("Dad bought more than a baker's dozen")
+}else if (n_donuts <12){
+  print("dad bought less than a dozen")
+}
+
+
+a = c(0, 1, 2, -4, 5)
+reciprocals = ifelse(a != 0, 1/a, NA)
+cbind(a, reciprocals)
+
+
+# exercise 3.3
+
+data = c(1,3,5,-999,2,-999,8)
+
+reciprocals= ifelse(data)
+
+
+
+
+
  
